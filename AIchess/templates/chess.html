@@ -1,0 +1,419 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <style>
+        body{
+            margin: 0px;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: black;
+        }
+        .container{
+            display: flex;
+            height: 400px;
+            flex-wrap: wrap;
+            width: 400px;
+            border: 1px solid black;
+            margin: auto;
+        }
+        .cell{
+            width: 12.5%;
+            height: 50px;
+            background: wheat;
+            /* border: 1px solid black; */
+            transition: 0.1s opacity;
+            box-sizing: border-box;
+        }
+        .black{
+            background: #be6736;
+        }
+        .cell:active{
+            opacity: 0.7;
+        }
+        .selected{
+            border: 2px solid black;
+            box-sizing: border-box;
+            opacity: 0.6;
+        }
+    </style>
+
+    <style>
+        .r::before{
+            content: "";
+            background-image: url("{%  static '/piece/r.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .b::before{
+            content: "";
+            background-image: url("{%  static '/piece/b.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .n::before{
+            content: "";
+            background-image: url("{%  static '/piece/n.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .p::before{
+            content: "";
+            background-image: url("{%  static '/piece/p.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .k::before{
+            content: "";
+            background-image: url("{%  static '/piece/k.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .q::before{
+            content: "";
+            background-image: url("{%  static '/piece/q.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+
+    <style>
+        .R1::before{
+            content: "";
+            background-image: url("{%  static '/piece/R1.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .B1::before{
+            content: "";
+            background-image: url("{%  static '/piece/B1.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .N1::before{
+            content: "";
+            background-image: url("{%  static '/piece/N1.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .P1::before{
+            content: "";
+            background-image: url("{%  static '/piece/P1.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .K1::before{
+            content: "";
+            background-image: url("{% static '/piece/K1.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .Q1::before{
+            content: "";
+            background-image: url("{% static '/piece/Q1.png' %}");
+            background-size: cover;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="cell black" onclick="callClick(1)"></div>
+        <div class="cell white" onclick="callClick(2)"></div>
+        <div class="cell black" onclick="callClick(3)"></div>
+        <div class="cell white" onclick="callClick(4)"></div>
+        <div class="cell black" onclick="callClick(5)"></div>
+        <div class="cell white" onclick="callClick(6)"></div>
+        <div class="cell black" onclick="callClick(7)"></div>
+        <div class="cell white" onclick="callClick(8)"></div>
+        
+        <div class="cell white" onclick="callClick(9)"></div>
+        <div class="cell black" onclick="callClick(10)"></div>
+        <div class="cell white" onclick="callClick(11)"></div>
+        <div class="cell black" onclick="callClick(12)"></div>
+        <div class="cell white" onclick="callClick(13)"></div>
+        <div class="cell black" onclick="callClick(14)"></div>
+        <div class="cell white" onclick="callClick(15)"></div>
+        <div class="cell black" onclick="callClick(16)"></div>
+
+        <div class="cell black" onclick="callClick(17)"></div>
+        <div class="cell white" onclick="callClick(18)"></div>
+        <div class="cell black" onclick="callClick(19)"></div>
+        <div class="cell white" onclick="callClick(20)"></div>
+        <div class="cell black" onclick="callClick(21)"></div>
+        <div class="cell white" onclick="callClick(22)"></div>
+        <div class="cell black" onclick="callClick(23)"></div>
+        <div class="cell white" onclick="callClick(24)"></div>
+
+        <div class="cell white" onclick="callClick(25)"></div>
+        <div class="cell black" onclick="callClick(26)"></div>
+        <div class="cell white" onclick="callClick(27)"></div>
+        <div class="cell black" onclick="callClick(28)"></div>
+        <div class="cell white" onclick="callClick(29)"></div>
+        <div class="cell black" onclick="callClick(30)"></div>
+        <div class="cell white" onclick="callClick(31)"></div>
+        <div class="cell black" onclick="callClick(32)"></div>
+
+        <div class="cell black" onclick="callClick(33)"></div>
+        <div class="cell white" onclick="callClick(34)"></div>
+        <div class="cell black" onclick="callClick(35)"></div>
+        <div class="cell white" onclick="callClick(36)"></div>
+        <div class="cell black" onclick="callClick(37)"></div>
+        <div class="cell white" onclick="callClick(38)"></div>
+        <div class="cell black" onclick="callClick(39)"></div>
+        <div class="cell white" onclick="callClick(40)"></div>
+
+        <div class="cell white" onclick="callClick(41)"></div>
+        <div class="cell black" onclick="callClick(42)"></div>
+        <div class="cell white" onclick="callClick(43)"></div>
+        <div class="cell black" onclick="callClick(44)"></div>
+        <div class="cell white" onclick="callClick(45)"></div>
+        <div class="cell black" onclick="callClick(46)"></div>
+        <div class="cell white" onclick="callClick(47)"></div>
+        <div class="cell black" onclick="callClick(48)"></div>
+
+        <div class="cell black" onclick="callClick(49)"></div>
+        <div class="cell white" onclick="callClick(50)"></div>
+        <div class="cell black" onclick="callClick(51)"></div>
+        <div class="cell white" onclick="callClick(52)"></div>
+        <div class="cell black" onclick="callClick(53)"></div>
+        <div class="cell white" onclick="callClick(54)"></div>
+        <div class="cell black" onclick="callClick(55)"></div>
+        <div class="cell white" onclick="callClick(56)"></div>
+
+        <div class="cell white" onclick="callClick(57)"></div>
+        <div class="cell black" onclick="callClick(58)"></div>
+        <div class="cell white" onclick="callClick(59)"></div>
+        <div class="cell black" onclick="callClick(60)"></div>
+        <div class="cell white" onclick="callClick(61)"></div>
+        <div class="cell black" onclick="callClick(62)"></div>
+        <div class="cell white" onclick="callClick(63)"></div>
+        <div class="cell black" onclick="callClick(64)"></div>
+    </div>
+
+    <script>
+
+        init = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'];
+        lastHigh = 0;
+        myturn = true;
+        picked = false;
+        wasP = false;
+        valid = false;
+
+        function getBlock(num=1){
+            num -= 1;
+            allcell = document.getElementsByClassName("cell");
+            return allcell[num];
+        }
+
+        function placePiece(num, p){
+            block = getBlock(num);
+            if(block.classList.length > 2){
+                pickPiece(num);
+            }
+            block.classList.add(p);
+            picked = false;
+        }
+
+        function pickPiece(num){
+            block = getBlock(num);
+            a = block.classList;
+            p = a[a.length-1];
+            block.classList.remove(p);
+            picked = true;
+            return p;
+        }
+
+        function arrangePiece(){
+            for(i=1; i<=8; i++){
+                placePiece(i, init[i-1]);
+                placePiece(i+8, 'p');
+                placePiece(i+48, 'P1');
+                placePiece(i+56, init[i-1].toUpperCase()+'1');
+            }
+        }
+
+        function highlight(num){
+            wasP = false;
+            if(lastHigh!=0){
+                getBlock(lastHigh).style.opacity = "1";
+                getBlock(lastHigh).style.border = "none";
+            }
+            if(getBlock(num).classList.length>2){
+                getBlock(num).style.border = "3px solid red";
+                wasP = true;
+                row = 8-Math.floor((num-1)/8);
+                col = ((num-1)%8)+1;
+                //console.log(String.fromCharCode(96+col), row);
+                move+=String.fromCharCode(96+col);
+                move+=row;
+            }
+            else{
+                getBlock(num).style.opacity = "0.6";
+            }
+            lastHigh = num;
+        }
+
+        function callApis(apiUrl) {
+          // Use the fetch function to make the API call
+          fetch(apiUrl)
+            .then(response => {
+              // Check if the response is successful (status code 2xx)
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              // Parse the response as JSON
+              return response.json();
+            })
+            .then(data => {
+              // Print the response data
+              console.log('API Response:', data);
+              valid = data;
+              //return data;
+            })
+            .catch(error => {
+              // Handle any errors that occurred during the fetch
+              console.error('Error:', error);
+            });
+        }
+
+        function callApi(apiUrl) {
+          // Create a new XMLHttpRequest object
+          var xhr = new XMLHttpRequest();
+
+          // Configure it to be synchronous
+          xhr.open('GET', apiUrl, false);  // The third parameter specifies synchronous request
+
+          try {
+            // Send the request
+            xhr.send();
+
+            // Check if the response is successful (status code 2xx)
+            if (xhr.status >= 200 && xhr.status < 300) {
+              // Parse the response as JSON
+              var data = JSON.parse(xhr.responseText);
+
+              // Print the response data
+              console.log('API Response:', data);
+
+              // Return the data if needed
+              return data;
+            } else {
+              throw new Error(`HTTP error! Status: ${xhr.status}`);
+            }
+          } catch (error) {
+            // Handle any errors that occurred during the request
+            console.error('Error:', error);
+            // Throw the error again if you want to propagate it
+            throw error;
+          }
+        }
+
+        // Example usage:
+        // Continue with further code after the response is received
+
+
+        // Example usage:
+
+        function getNums(m){
+            sx = m[0].charCodeAt() - 96;
+            sy = (8-parseInt(m[1]))*8;
+            ex = m[2].charCodeAt() - 96;
+            ey = (8-parseInt(m[3]))*8;
+
+            console.log(sx, sy+sx, ex, ey+ex);
+            placePiece(ey+ex, pickPiece(sy+sx));
+
+        }
+
+        move = "";
+        function callClick(num){
+            if(num == lastHigh){
+                return 0;
+            }
+            if(wasP){
+                row = 8-Math.floor((num-1)/8);
+                col = ((num-1)%8)+1;
+                //console.log(String.fromCharCode(96+col), row);
+                move+=String.fromCharCode(96+col);
+                move+=row;
+                apiUrl = "http://"+window.location.host+"/check/"+move;
+                valid = callApi(apiUrl);
+                if(!valid){
+                    console.log("WHAT");
+                    move = "";
+                    wasP = false;
+                    return;
+                }
+                placePiece(num, pickPiece(lastHigh));
+                getBlock(num).style.opacity = "1";
+                getBlock(num).style.border = "none";
+                wasP = false;
+                move = '';
+                apiUrl = "http://"+window.location.host+"/aimove/";
+                while(true){
+                    aimove = callApi(apiUrl);
+                    if(aimove['move'] != ""){
+                        getNums(aimove['move']);
+                        break;
+                    }
+                }
+                return;
+            }
+            highlight(num);
+        }
+        arrangePiece();
+    </script>
+</body>
+</html>
